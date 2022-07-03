@@ -1,0 +1,41 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input
+      type="text"
+      placeholder="Enter Username"
+      name="uname"
+      formControlName="username"
+    />
+
+    <div
+      class="infoMessage"
+      *ngIf="
+        loginForm.get('username').invalid &&
+        (loginForm.get('username').dirty || loginForm.get('username').touched)
+      "
+    >
+      Please provide Username.
+    </div>
+
+    <label for="psw"><b>Password</b></label>
+    <input
+      type="password"
+      placeholder="Enter Password"
+      name="psw"
+      formControlName="password"
+    />
+
+    <div
+      class="infoMessage"
+      *ngIf="
+        loginForm.get('password').invalid &&
+        (loginForm.get('password').dirty || loginForm.get('password').touched)
+      "
+    >
+      Please provide Password.
+    </div>
+
+    <button type="submit" class="validButton">Login</button>
+  </div>
+</form>
